@@ -1,0 +1,232 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poliponi Sheila On 7 - Bali 2026</title>
+
+<style>
+* {margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+
+body {
+  background:#0f0f0f;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* LOADING */
+#loader {
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:#0f0f0f;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  flex-direction:column;
+}
+
+.spinner {
+  border:4px solid #333;
+  border-top:4px solid #00ff88;
+  border-radius:50%;
+  width:40px;
+  height:40px;
+  animation:spin 1s linear infinite;
+  margin-bottom:15px;
+}
+
+@keyframes spin {100%{transform:rotate(360deg);}}
+
+/* HERO */
+.hero {
+  height:100vh;
+  background:url('poster.jpg') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+}
+
+.hero::after {
+  content:'';
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:linear-gradient(to top,#0f0f0f,transparent);
+}
+
+.hero-content {
+  position:relative;
+  z-index:2;
+}
+
+.hero h1 {font-size:40px;}
+.hero p {margin-top:10px;opacity:0.8;}
+
+.date-badge {
+  margin-top:15px;
+  display:inline-block;
+  background:#00c853;
+  padding:10px 20px;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+/* COUNTDOWN */
+.countdown {
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.time-box {
+  background:#1c1c1c;
+  padding:10px 15px;
+  border-radius:8px;
+  min-width:70px;
+}
+
+.time-box span {
+  display:block;
+  font-size:20px;
+  font-weight:bold;
+}
+
+.time-box small {
+  font-size:12px;
+  opacity:0.7;
+}
+
+/* BUTTON */
+.btn {
+  margin-top:25px;
+  display:inline-block;
+  padding:14px 28px;
+  background:#ff3d00;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.btn:hover {
+  background:#ff6d00;
+  transform:scale(1.05);
+}
+
+/* SECTION */
+.section {padding:60px 20px;text-align:center;}
+.card {
+  background:#1c1c1c;
+  padding:20px;
+  border-radius:12px;
+  margin-top:20px;
+}
+
+.footer {
+  padding:20px;
+  text-align:center;
+  font-size:14px;
+  opacity:0.6;
+}
+
+@media(max-width:768px){
+  .hero h1 {font-size:28px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="spinner"></div>
+  <div>Memuat Event...</div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Sheila On 7</h1>
+    <p>Poliponi - Si Paling Konser 2026</p>
+
+    <div class="date-badge">04 Juli 2026</div>
+
+    <!-- COUNTDOWN -->
+    <div class="countdown" id="countdown">
+      <div class="time-box"><span id="days">0</span><small>Hari</small></div>
+      <div class="time-box"><span id="hours">0</span><small>Jam</small></div>
+      <div class="time-box"><span id="minutes">0</span><small>Menit</small></div>
+      <div class="time-box"><span id="seconds">0</span><small>Detik</small></div>
+    </div>
+
+    <a href="https://soekarnofestrun2026-rgb.github.io/Bali-United-training-center/" class="btn">
+      Beli Tiket
+    </a>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="section">
+  <h2>Detail Event</h2>
+  <div class="card">
+    <p><b>Lokasi:</b> Bali United Training Center</p>
+    <p><b>Kota:</b> Bali</p>
+    <p><b>Artis:</b> Sheila On 7</p>
+    <p><b>Promotor:</b> LetraLive</p>
+    <p><b>Ticketing:</b> Artatix</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <h2>Jangan Sampai Ketinggalan!</h2>
+  <a href="https://soekarnofestrun2026-rgb.github.io/Bali-United-training-center/" class="btn">
+    Amankan Tiket Sekarang
+  </a>
+</section>
+
+<div class="footer">© 2026 Poliponi.id</div>
+
+<script>
+// LOADER + REDIRECT
+window.onload = function(){
+  setTimeout(()=>{
+    document.getElementById("loader").style.display = "none";
+  }, 2000);
+
+  // AUTO REDIRECT (10 detik)
+  setTimeout(()=>{
+    window.location.href = "https://soekarnofestrun2026-rgb.github.io/Bali-United-training-center/";
+  }, 10000);
+}
+
+// COUNTDOWN REAL
+const targetDate = new Date("July 4, 2026 00:00:00").getTime();
+
+setInterval(()=>{
+  const now = new Date().getTime();
+  const distance = targetDate - now;
+
+  const d = Math.floor(distance / (1000*60*60*24));
+  const h = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+  const m = Math.floor((distance % (1000*60*60))/(1000*60));
+  const s = Math.floor((distance % (1000*60))/1000);
+
+  document.getElementById("days").innerText = d;
+  document.getElementById("hours").innerText = h;
+  document.getElementById("minutes").innerText = m;
+  document.getElementById("seconds").innerText = s;
+},1000);
+</script>
+
+</body>
+</html>
+```
